@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package yggdrasil.domain;
+
+option go_package = "github.com/imkuqin-zw/yggdrasil-domain/proto/yggdrasil/domain;domain";
+option java_multiple_files = true;
+option java_outer_classname = "DomainProto";
+option java_package = "com.github.imkuqin_zw.yggdrasil.domain";
+option objc_class_prefix = "API";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MessageOptions {
+  Event event = 1109;
+}
+
+message Event {
+  string topic = 1;
+  repeated string IDFields = 2;
+}

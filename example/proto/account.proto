@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package yggdrasil.domain.example;
+
+option go_package = "github.com/imkuqin-zw/yggdrasil-domain/example/proto;proto";
+
+import "yggdrasil/domain/event.proto";
+
+// 业务类型
+enum BusinessType {
+  BusinessTypeUnknown = 0;
+  // 1v1视频
+  BusinessType1V1Audio = 1;
+  // 充值
+  BusinessTypeRecharge = 2;
+  // 管理员修改
+  BusinessTypeManagerChg = 3;
+}
+
+// 账户余额变动事件
+message AccountBalanceChangeEvent {
+  option (yggdrasil.domain.event) = {
+    topic: "AccountBalanceChange";
+    IDFields: ["businessType", "businessUniqueNo"]
+  };
+  // 业务方的唯一编号
+  int64 businessUniqueNo = 1;
+  BusinessType businessType = 2;
+  // 金额
+  double amount = 3;
+  int64 account = 4;
+}
