@@ -12,12 +12,14 @@ import (
 var _ = proto.Message(nil)
 var _ = fmt.GoStringer(nil)
 
+const TopicAccountBalanceChange = "AccountBalanceChange"
+
 func (e *AccountBalanceChangeEvent) ID() string {
 	return fmt.Sprintf("%d:%d", e.BusinessType, e.BusinessUniqueNo)
 }
 
 func (*AccountBalanceChangeEvent) Topic() string {
-	return "AccountBalanceChange"
+	return TopicAccountBalanceChange
 }
 
 func (e *AccountBalanceChangeEvent) Content() []byte {

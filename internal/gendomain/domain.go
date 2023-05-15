@@ -74,7 +74,7 @@ func fillEvents(file *protogen.File, desc *domainDesc) error {
 
 func getEvent(message *protogen.Message) (*EventDesc, error) {
 	event, ok := proto.GetExtension(message.Desc.Options(), domain.E_Event).(*domain.Event)
-	if !ok {
+	if event == nil || !ok {
 		return nil, nil
 	}
 	if len(event.IDFields) == 0 {
