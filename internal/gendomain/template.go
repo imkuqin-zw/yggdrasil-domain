@@ -8,12 +8,15 @@ import (
 
 var domainTemplate = `
 {{range .Events}}
+
+const Topic{{.Topic}} = "{{.Topic}}"
+
 func (e *{{.MessageName}}) ID() string {
 	return {{$.FmtPkg}}Sprintf("{{.ID.Format}}", {{.ID.Args}})
 }
 
 func (*{{.MessageName}}) Topic() string {
-	return "{{.Topic}}"
+	return Topic{{.Topic}}
 }
 
 func (e *{{.MessageName}}) Content() []byte {
