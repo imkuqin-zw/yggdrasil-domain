@@ -1,4 +1,4 @@
-package pkg
+package domain
 
 type Event interface {
 	ID() string
